@@ -75,4 +75,8 @@ DSS (Digital Signature Standard):
 - DSS is a Federal Information Processing Standard (FIPS) for digital signatures, originally proposed by the National Institute of Standards and Technology (NIST) in the United States.
 - DSS specifies the algorithms and procedures for the generation and verification of digital signatures based on the Digital Signature Algorithm (DSA).
 - DSA is a specific public-key algorithm used for digital signatures, and it relies on modular arithmetic and discrete logarithm problem for its security.
-- DSS includes specifications for the generation of digital signatures, the generation of digital signature keys, and the verification of digital signatures
+- DSS includes specifications for the generation of digital signatures, the generation of digital signature keys, and the verification of digital signatures.
+
+## Key Exchange
+
+The problem of exchanges a key traces back to the problem of communication. Many times, when looking at communication protocols, we assument that the users involved have already exchanged the related key (symmetric or asymmetric). This is a non-trivial task that is normally adressed by key exchange algorithm. Among them, Diffie-Hellman algorithm holds a key place due to historical and technical reasons.
