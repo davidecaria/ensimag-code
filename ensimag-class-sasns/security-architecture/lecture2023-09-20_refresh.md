@@ -52,3 +52,27 @@ Those three functions are use to provide the basic functionalities of the electo
 | Sig       | M,Kpriv       | σ             |
 | Verif     | M,σ,Kpub      | True OR False |
 
+The algorithm that we use for each of those function has a malginal importance, what really matters is that the three of them satify the following properties:
+
+- Correctness: This means that Verif should return true, if the the signature has not been forged and it has been created correctly.
+- Unforgeability: This means that Verif should return false if the signature has been forged or if it has been created in a wrong way.
+- Coherancy: A valid signature must always be valid (now, tomorrow and in 100 years).
+
+**NOTA BENE**
+The property of Unforgeability is closely related to the concept of Hardness of a hash/key. We say that the Hashing algorithm is strong enough if there is not polinomial time algorithm that can break it.
+
+### Extra concepts
+
+**PSS** and **DSS**
+
+PSS (Probabilistic Signature Scheme):
+- PSS is a probabilistic padding scheme commonly used with RSA (Rivest-Shamir-Adleman) digital signatures.
+- It helps improve the security of RSA signatures by introducing an element of randomness into the process.
+- The randomness in the padding scheme makes it more resistant to certain types of cryptographic attacks, such as those based on chosen plaintext or adaptive chosen ciphertext scenarios.
+- PSS padding includes a hash function and a mask generation function, adding complexity to the signature generation process.
+
+DSS (Digital Signature Standard):
+- DSS is a Federal Information Processing Standard (FIPS) for digital signatures, originally proposed by the National Institute of Standards and Technology (NIST) in the United States.
+- DSS specifies the algorithms and procedures for the generation and verification of digital signatures based on the Digital Signature Algorithm (DSA).
+- DSA is a specific public-key algorithm used for digital signatures, and it relies on modular arithmetic and discrete logarithm problem for its security.
+- DSS includes specifications for the generation of digital signatures, the generation of digital signature keys, and the verification of digital signatures
