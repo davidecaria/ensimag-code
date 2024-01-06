@@ -47,6 +47,8 @@ It is a combination of the following elements:
 Those three functions are use to provide the basic functionalities of the electonic signature system. The KeyGen funciton is used to generate Kpri and Kpub. the Sig function is used to create the signature itself. The verif function is used to verifiy the validity of the signature.
 
 | Function  | Input         | Output        |
+| --------  | ------------- | ------------- |
 | KeyGen    | 1<sup>λ</sup> | Kpriv, Kpub   |
 | Sig       | M,Kpriv       | σ             |
 | Verif     | M,σ,Kpub      | True OR False |
+
