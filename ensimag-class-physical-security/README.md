@@ -7,6 +7,7 @@ This course covers a range of topics in computer science. The first topic is abo
 - Embedded systems
 - Smart Card security
 - Introduction to quantum computing
+- Hardware trust
 
 Each section has its own folder and contains lecture notes and exercises.
 
