@@ -1,5 +1,5 @@
 # Solution of Lab 01 on code obfuscation
-
+The solution include some of the disassabled code. It is sufficient to follow the instruction for Ghidra or objdump to get a similar result.
 
 ## crackme0
 
