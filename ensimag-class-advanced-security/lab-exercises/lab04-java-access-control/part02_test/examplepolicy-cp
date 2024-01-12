@@ -1,0 +1,7 @@
+grant Codebase "file:/home/vassi/personalGit/ensimag-code/ensimag-class-advanced-security/lab-exercises/lab04-java-access-control/GetProps_v2" {
+	//permission java.io.FilePermission "user.home","read" ;
+	//permission java.security.AllPermission;
+	permission java.util.PropertyPermission "user.home","read";
+	permission java.util.PropertyPermission "java.home","read";
+
+} ;
