@@ -122,7 +122,7 @@ However, it's important to note that implementing DRP can be complex and may lea
 
 It's important to note that while these countermeasures can significantly increase the difficulty of successfully executing side-channel attacks, they often come with trade-offs in terms of increased cost, complexity, and reduced performance or efficiency of the attack.
 
-## Q5 - AES can be vulnerable to fault attacks. Describe briefly how Differential Fault Analysis can allow recovering the secret key, and suggest a (few) countermeasure(s) that could be adopted. Which are the pros and against of the solution(s) you proposed?
+## Q5 - AES can be vulnerable to fault attacks. Describe briefly how Differential Fault Analysis can allow recovering the secret key, and suggest a (few) countermeasure(s) that could be adopted. Which are the pros and cons against of the solution(s) you proposed?
 
 **Differential Fault Analysis (DFA) on AES:**
 
