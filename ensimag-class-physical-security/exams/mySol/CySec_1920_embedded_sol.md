@@ -234,6 +234,4 @@ The principle of operation of an SRAM (Static Random Access Memory) Physically U
 - **Secure Key Generation**: The pattern can be processed (e.g., via error correction and cryptographic hashing) to generate cryptographic keys.
 - **Anti-Cloning**: Since the pattern is unique and unclonable, it provides a robust mechanism against counterfeiting and cloning of devices.
 
-SRAM PUFs are particularly attractive due to their simplicity and the fact that SRAM is a common component in many modern electronic devices, allowing for easy integration without the need for additional hardware. However, challenges such as sensitivity to environmental
-
- conditions (temperature, voltage variations) and aging must be addressed, often through error correction techniques and careful design to ensure the reliability and stability of the PUF response over the device's lifetime.
+SRAM PUFs are particularly attractive due to their simplicity and the fact that SRAM is a common component in many modern electronic devices, allowing for easy integration without the need for additional hardware. However, challenges such as sensitivity to environmental conditions (temperature, voltage variations) and aging must be addressed, often through error correction techniques and careful design to ensure the reliability and stability of the PUF response over the device's lifetime.
