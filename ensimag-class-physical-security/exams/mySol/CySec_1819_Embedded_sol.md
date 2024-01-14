@@ -198,7 +198,7 @@ These hardware features enhance the security of a system by providing low-level,
 
  implementation of such features must be done carefully to avoid introducing new vulnerabilities or significantly impacting system performance.
 
-## Q7 - What are the limitations of debug access protection based on Trustzone? Justify your answer.
+## Q7 - What are the limitations of debug access protection based on Trustzone? Justify your answer.
 
 Debug access protection based on ARM TrustZone, while providing a robust mechanism for securing debug interfaces, has certain limitations:
 
