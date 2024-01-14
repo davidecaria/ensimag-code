@@ -154,3 +154,7 @@ ing the intellectual property by preventing reverse engineering attempts.
 5. **Balancing Security and Accessibility**: Finding the right balance between making the scan chain secure and keeping it accessible enough for legitimate testing purposes can be challenging.
 
 In conclusion, while scrambling the scan chain provides enhanced security against a range of attacks and helps protect intellectual property, it introduces additional complexity and potential challenges in the testing and debugging processes. The decision to implement scan chain scrambling should consider these trade-offs, assessing the specific security needs against the potential impact on chip development and maintenance.
+
+## Q5 - Which are the main counterfeiting techniques, where can they occur in the untrusted chain, and how they can be prevented?
+
+
