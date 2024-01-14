@@ -121,3 +121,53 @@ However, it's important to note that implementing DRP can be complex and may lea
 - **Physical Isolation:** Isolating sensitive components from other parts of the system to reduce overall leakage.
 
 It's important to note that while these countermeasures can significantly increase the difficulty of successfully executing side-channel attacks, they often come with trade-offs in terms of increased cost, complexity, and reduced performance or efficiency of the attack.
+
+## Q5 - AES can be vulnerable to fault attacks. Describe briefly how Differential Fault Analysis can allow recovering the secret key, and suggest a (few) countermeasure(s) that could be adopted. Which are the pros and against of the solution(s) you proposed?
+
+**Differential Fault Analysis (DFA) on AES:**
+
+Differential Fault Analysis is a side-channel attack that targets cryptographic algorithms like AES (Advanced Encryption Standard) by intentionally inducing faults during the encryption process and analyzing the differences between the correct and faulty outputs.
+
+**How DFA Works in AES:**
+
+1. **Fault Induction**: The attacker induces a fault in the AES algorithm during its execution. This can be done in various ways, such as by manipulating the power supply, clock signal, or using a laser or electromagnetic pulse.
+
+2. **Analyzing Outputs**: The attacker then compares the faulty cipher output with the correct cipher output. The differences give clues about the internal state of the AES algorithm, particularly in the last rounds of the encryption process.
+
+3. **Key Recovery**: By carefully analyzing how the introduced fault alters the output, the attacker can make inferences about the values of certain bits in the key. Repeating this process with different faults can eventually reveal the entire key.
+
+**Countermeasures Against DFA:**
+
+1. **Redundancy in Computation**: Implementing redundant computations and comparing the results can detect discrepancies caused by faults. If a discrepancy is detected, the operation can be aborted, or an error can be signaled.
+
+2. **Random Delays**: Introducing random delays in the encryption process can make it more difficult for an attacker to precisely time the fault injection.
+
+3. **Error Detection and Correction Codes**: Implementing error detection and correction mechanisms within the cryptographic algorithm can identify and correct errors due to fault attacks.
+
+4. **Consistency Checks**: Adding additional checks to ensure the consistency of the computation at various stages of the encryption process can detect and mitigate fault attacks.
+
+5. **Hardware Countermeasures**: Designing the hardware to be more resilient to environmental changes and physical tampering, such as using tamper-resistant packaging or sensors to detect abnormal conditions.
+
+**Pros and Cons of These Solutions:**
+
+- **Redundancy in Computation**:
+  - Pros: Effective at detecting faults, can be implemented in software.
+  - Cons: Increases computational overhead and power consumption.
+
+- **Random Delays**:
+  - Pros: Simple to implement, increases the difficulty of successful fault injection.
+  - Cons: May not be effective against sophisticated attackers who can adapt to timing variations.
+
+- **Error Detection and Correction Codes**:
+  - Pros: Can identify and correct faults, adding an additional layer of security.
+  - Cons: Adds complexity and may increase computational overhead.
+
+- **Consistency Checks**:
+  - Pros: Effective at detecting anomalies during execution.
+  - Cons: Can increase computational overhead and may be circumvented by sophisticated attacks.
+
+- **Hardware Countermeasures**:
+  - Pros: Provides physical protection against tampering and environmental manipulation.
+  - Cons: Can be expensive to implement and may not be feasible for all devices.
+
+In summary, while these countermeasures can significantly increase the difficulty of performing a successful DFA attack, they often come with trade-offs in terms of increased cost, complexity, and computational overhead. The choice of countermeasure(s) depends on the specific requirements and constraints of the system being protected.
