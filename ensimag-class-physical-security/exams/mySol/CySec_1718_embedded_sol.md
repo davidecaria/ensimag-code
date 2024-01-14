@@ -1,4 +1,4 @@
-# CySec Exam 2018/2019 - Embedded systems
+# CySec Exam 2017/2018 - Embedded systems
 
 ## Q1 - Why is security in embedded system important? Cite a few domains where embedded systems should be secured, and describe at least an example of an embedded system that was compromised.
 
