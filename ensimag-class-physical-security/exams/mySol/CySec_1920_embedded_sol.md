@@ -157,4 +157,4 @@ In conclusion, while scrambling the scan chain provides enhanced security agains
 
 ## Q5 - Which are the main counterfeiting techniques, where can they occur in the untrusted chain, and how they can be prevented?
 
-
+## Q6 - Explain the principle of operation of an SRAM PUF.
