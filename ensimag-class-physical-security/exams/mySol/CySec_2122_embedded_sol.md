@@ -30,3 +30,19 @@ Security in embedded systems is critical for several reasons:
 
 - **Stuxnet Worm Attack on Industrial Control Systems**: One of the most famous examples of an embedded system compromise is the Stuxnet worm, which targeted programmable logic controllers (PLCs) used in Iran's nuclear facilities. The malware subtly altered the speeds of centrifuges, causing physical damage while showing normal operating parameters to monitoring systems. This attack underscored the potential for cyber-attacks to cause physical damage to critical infrastructure and highlighted the importance of securing embedded systems against sophisticated threats.
 
+## Q2 - Describe briefly a few side channel attacks that can be mounted against digital systems.
+
+Side-channel attacks are a form of security exploit that target the physical implementation of a digital system rather than exploiting software vulnerabilities. These attacks are based on the analysis of information gathered from the physical system, such as timing information, power consumption, electromagnetic leaks, or even sound. Here are a few common types of side-channel attacks:
+
+1. **Timing Attacks**: These exploit variations in the time taken to execute cryptographic operations to reveal secrets. For example, by measuring how long it takes a system to encrypt a message, an attacker might deduce information about the encryption key or algorithm.
+
+2. **Power Analysis Attacks**: These involve measuring the power consumption of a device during operation. There are two primary types of power analysis attacks:
+   - **Simple Power Analysis (SPA)**: This looks at power consumption patterns to guess at what operations the device is performing, potentially revealing secret keys.
+   - **Differential Power Analysis (DPA)**: This involves collecting power measurements across many operations and using statistical analysis to find correlations that leak information about the cryptographic keys.
+
+3. **Electromagnetic Attacks**: Similar to power analysis, these attacks analyze electromagnetic emissions from a device. By using an electromagnetic probe placed near the device, an attacker can gather data about the electromagnetic fields generated during cryptographic operations.
+
+4. **Acoustic Cryptanalysis**: This form of attack uses sounds emitted by a device, particularly mechanical or electronic noises, to gather information. For example, the sound of a printer or the hum of a computer processor can sometimes be used to infer sensitive data.
+
+These attacks highlight the need for robust security not just in software, but in the hardware design and physical operation of digital systems. Countermeasures typically include designing systems to operate uniformly in terms of time and power consumption, shielding emissions, and implementing error detection and correction mechanisms.
+
