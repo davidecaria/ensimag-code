@@ -90,7 +90,7 @@ However, it's important to note that implementing DRP can be complex and may lea
 
 3. **Locality of Information**: EM emissions can provide localized information about where on a chip certain operations are taking place, due to the spatial nature of electromagnetic fields. Power consumption analysis usually provides a more global view of the device’s activity.
 
-**Counterme asures Against Power Consumption and EM Emission Side Channel Attacks:**
+**Countermeasures Against Power Consumption and EM Emission Side Channel Attacks:**
 
 1. **Countermeasures for Power Consumption Attacks:**
 
