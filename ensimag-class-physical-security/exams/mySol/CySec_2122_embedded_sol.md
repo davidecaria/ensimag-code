@@ -46,3 +46,28 @@ Side-channel attacks are a form of security exploit that target the physical imp
 
 These attacks highlight the need for robust security not just in software, but in the hardware design and physical operation of digital systems. Countermeasures typically include designing systems to operate uniformly in terms of time and power consumption, shielding emissions, and implementing error detection and correction mechanisms.
 
+## Q3 - Describe a countermeasure against side channel attacks that can be applied at architectural level, why it works, and what is the additional protection that is expected against these attacks.
+
+One effective countermeasure against side-channel attacks at the architectural level is the implementation of **Dual-Rail Precharge Logic (DRP)**. This countermeasure is particularly useful against power analysis attacks, including both Simple Power Analysis (SPA) and Differential Power Analysis (DPA).
+
+**How Dual-Rail Precharge Logic Works:**
+
+1. **Dual-Rail Logic**: In traditional single-rail logic, each bit is represented by a single line that can be either high (1) or low (0). In dual-rail logic, each bit is represented by two lines. One line carries the true value (1 or 0), and the other line carries the complement (0 or 1). This means that for every bit of information, both a "1" and a "0" are represented, regardless of the actual value of the bit.
+
+2. **Precharge Phase**: Before each operation, the dual-rail circuit is precharged to a known state, usually with both lines in a neutral or equal state. After the precharge phase, the operation is performed, and the dual-rail outputs transition to their final states representing the actual computed value.
+
+**Why It Works:**
+
+- **Balanced Power Consumption**: Because each bit is represented by two lines and one of them is always transitioning from the precharged state to the final state regardless of the bit value, the power consumption becomes much more uniform. This uniformity makes it difficult to distinguish between a logical "1" and a "0" based on power analysis, thereby mitigating SPA and DPA attacks.
+
+- **Consistent Timing**: The use of dual-rail logic can also contribute to consistent execution timing for operations, which can help protect against timing attacks.
+
+**Additional Protection Expected:**
+
+- **Reduced Leakage of Information**: Since the power consumption is more uniform and does not directly correlate with the actual data values or operations being performed, it becomes significantly harder for an attacker to gain useful information from side-channel measurements.
+
+- **Mitigation of Electromagnetic and Acoustic Side-Channels**: The balanced nature of the dual-rail precharge logic also helps in reducing electromagnetic and acoustic emissions that can be exploited in side-channel attacks.
+
+However, it's important to note that implementing DRP can be complex and may lead to increased circuit area and power consumption. This is due to the need for additional circuitry to handle the dual-rail representation and precharge mechanism. Additionally, careful design is required to ensure that the power consumption is truly balanced and that no unintended side-channel signals are introduced.
+
+
