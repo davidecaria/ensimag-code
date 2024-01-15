@@ -89,3 +89,67 @@ Adjust the algorithm to perform a fixed number of operations per cycle, regardle
 Introduce non-deterministic order of operations where possible. For instance, rather than always performing the square operation before the multiply, randomize which operation comes first to prevent a clear power consumption pattern from forming.
 
 By incorporating these improvements, the RSA algorithm would become more resistant to side-channel attacks based on power analysis, as the modifications aim to eliminate distinguishable power consumption patterns that can be tied to specific key bits. It's important to note that implementing these changes should be done with care to ensure that the security enhancements do not inadvertently introduce new vulnerabilities or significantly impact the algorithm's performance
+
+### **2.4 Is this new algorithm is safe against perturbation attacks? Explain why.**
+It is way more robuts but it can be vulnerable to other perturbation attacks.
+
+## Section 3 - Verify PIN
+
+### **3.1 Explain the countermeasures at lines 1 and 2**
+
+The idea of having a custom constant value for true and false may be to avoid unintentional return values that may lead to success/fail of the function. 
+
+### **3.2 Explain the countermeasures from line 12 to 15**
+
+The main countermeasure is the use of the counter *correct_digits*. This eliminates the possibility of a timing attack based on the execution time of the check. Specifically, by using a counter, we can effectively make the time for each check constant. The user is unaware of the process until he hits the correct PIN. This differs a lot concerning a design in which we instantly return when we hit the wrong digit of the pin.
+
+### **3.3 Explain the countermeasures at lines 9 and 16**
+
+Those two lines implent the protection againts brute force attacks. By setting a maximum number of trials, we avoid exaustive attacks which will lead to the PIN value in a finate ammount of time (due to the length of the PIN).
+
+## Section 4 - Symmetric cipher
+
+### **4.1 Explain shortly how to perform a Side Channel attack on an AES.**
+
+1. Setup
+2. Acquiring data (power consumption)
+3. Leakage assesment (use t-student to find two sets that have distinguishable means)
+4. Attack on a specfic part of the AES algorithm (ex: First AddRoundKey)
+
+### **4.2 What is a Differential Fault Attack (DFA) on a symmetric cipher?**
+A Differential Fault Attack (DFA) is an advanced cryptanalysis technique that involves intentionally inducing faults in the computation of a cryptographic algorithm and analyzing the differences (or differentials) between the correct outputs and the faulty outputs to deduce information about the secret key. When applied to a symmetric cipher, such as AES, the process typically involves the following steps:
+
+1. **Fault Induction:**
+   - The attacker introduces errors into the cryptographic device's operation. This can be done through various means such as voltage spikes, clock glitches, temperature variations, or laser beams directed at the chip.
+
+2. **Faulty Output Collection:**
+   - The attacker collects the erroneous ciphertexts generated due to the induced faults, along with the correct ciphertext produced without fault induction.
+
+3. **Differential Analysis:**
+   - The attacker then compares the correct ciphertext with the faulty ciphertexts. The differences between these outputs are analyzed to determine how the induced fault affected the cipher's operation.
+
+4. **Key Hypothesis and Verification:**
+   - By understanding the cipher's structure and how the fault propagates through the rounds of encryption, the attacker can make educated guesses about the secret key or certain bits of it. They can verify these hypotheses by checking if the assumed key bits would lead to the observed differences in the ciphertext.
+
+5. **Key Recovery:**
+   - Through iterative analysis and hypothesis testing, the attacker can gradually recover parts of the key or the entire key.
+
+DFA is particularly effective against symmetric ciphers because they typically involve a series of well-defined transformations. If an attacker knows the specific round where the fault was induced and can control or observe the fault's impact, they can use this knowledge to reverse-engineer the key that produced the observed faulty outputs.
+
+### **4.3 How many faults and what kind of faults do you need to succeed a Piret and Quisquater DFA on AES?**
+
+The Piret and Quisquater Differential Fault Analysis (DFA) method on AES typically requires inducing a single fault. The attack focuses on injecting a fault into the AES state array during the execution of the last or the penultimate round before the final ciphertext is produced. The type of fault needed for this attack is very specific:
+
+1. **Byte Fault:** The fault should affect only one byte of the state array. By altering just a single byte, the attacker can use the difference between the correct and faulty
+
+ ciphertexts to make inferences about the key.
+
+2. **Well-Timed Fault:** The fault must be induced at a precise time, specifically when the AES cipher is undergoing its last round of encryption operations. This is due to the attack exploiting the simplicity of the last round, which does not include the MixColumns operation.
+
+Using the AES round transformations and the observed faulty output, the attacker can work backward to deduce the correct value of the key bytes that were used in the last round key (RoundKey). Since AES key schedule is reversible, recovering the last round key can lead to the recovery of the entire AES key.
+
+The Piret and Quisquater attack is significant because it demonstrated that even a single well-placed fault can compromise the security of an otherwise secure encryption algorithm like AES. This underscores the importance of implementing hardware and software countermeasures in cryptographic devices to detect and mitigate fault attacks.
+
+
+
+
