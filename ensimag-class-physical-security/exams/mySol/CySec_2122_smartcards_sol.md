@@ -65,17 +65,27 @@ To describe the experimental set-up for acquiring a consumption curve during the
 5. **Data Capturing:**
    - The power consumption is continuously recorded until the RSA operation is complete. This data will typically show variations in power usage as different parts of the algorithm are executed.
 
-### **2.2 Retrieve one byte of the private key with the help of the curve**
+### **2.2 Retrieve one byte of the private key with the help of the curve.**
 
 To extract a byte of the private key from the power consumption trace during RSA operations, we undertake a methodical process that includes the following key steps:
 
 1. **Algorithm Analysis:**
 The proposed implementation of the RSA algorithm operates on an asymmetric basis, utilizing the square-and-multiply method. This approach results in varying power consumptions that are dependent on the type of operation being performed. By examining the algorithm closely, we recognize that the power trace can provide us with discernible indicators of the algorithm's execution flow, particularly the power differential between squaring and multiplying operations.
 
-2. **Trace to Bit Mapping:**
-3. From the power trace, we observe distinctive peaks and valleys corresponding to the computational intensity of the RSA algorithm's steps. The peaks in the power trace are indicative of the multiply operation—triggered when the key bit is '1' and the algorithm enters the 'if' branch. Conversely, valleys in the trace suggest the execution of only the squaring operation, signifying that the key bit at that point is '0'.
+3. **Trace to Bit Mapping:**
+From the power trace, we observe distinctive peaks and valleys corresponding to the computational intensity of the RSA algorithm's steps. The peaks in the power trace are indicative of the multiply operation—triggered when the key bit is '1' and the algorithm enters the 'if' branch. Conversely, valleys in the trace suggest the execution of only the squaring operation, signifying that the key bit at that point is '0'.
 
-4. **Key Reconstruction:**
-5. Having aligned the power trace peaks and valleys with their respective key bit values, we initiate the reconstruction of the key by backtracking. For instance, a power trace sequence of peaks (P) and valleys (V) like 'P - V - P - V - P - P - V - P - P - V - P' translates to a binary sequence '1 - 0 - 1 - 0 - 1 - 1 - 0 - 1 - 1 - 0 - 1'. It is crucial to remember that the bits are in reverse order due to the specific notation used in the RSA algorithm, so the actual key sequence would be reversed from the order in which it is read from the trace.
+5. **Key Reconstruction:**
+Having aligned the power trace peaks and valleys with their respective key bit values, we initiate the reconstruction of the key by backtracking. For instance, a power trace sequence of peaks (P) and valleys (V) like 'P - V - P - V - P - P - V - P - P - V - P' translates to a binary sequence '1 - 0 - 1 - 0 - 1 - 1 - 0 - 1 - 1 - 0 - 1'. It is crucial to remember that the bits are in reverse order due to the specific notation used in the RSA algorithm, so the actual key sequence would be reversed from the order in which it is read from the trace.
 
 By applying this structured approach, we can piece together the key's binary sequence. If the trace pattern identified is 'P - V - P - V - P - P - V - P - P - V - P', the resulting key sequence, when reversed to match the algorithm's notation, is '10110110101', which represents the portion of the private key we sought to retrieve.
+
+### **2.3 Propose an improvement to this algorithm such that the previous attack is not possible anymore.**
+
+1. **Algorithmic Balancing:**
+Adjust the algorithm to perform a fixed number of operations per cycle, regardless of the key bit being processed. This could mean always performing both the square and multiply operations but discarding the result of the multiply when the key bit is '0'. This balance ensures the power consumption remains consistent across all cycles.
+
+3. **Randomize Operation Order:**
+Introduce non-deterministic order of operations where possible. For instance, rather than always performing the square operation before the multiply, randomize which operation comes first to prevent a clear power consumption pattern from forming.
+
+By incorporating these improvements, the RSA algorithm would become more resistant to side-channel attacks based on power analysis, as the modifications aim to eliminate distinguishable power consumption patterns that can be tied to specific key bits. It's important to note that implementing these changes should be done with care to ensure that the security enhancements do not inadvertently introduce new vulnerabilities or significantly impact the algorithm's performance
