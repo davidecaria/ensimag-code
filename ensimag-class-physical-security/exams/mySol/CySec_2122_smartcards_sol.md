@@ -37,3 +37,45 @@ To perform a perturbation attack on embedded devices, two specific tools that ca
 1. **Laser and Electromagnetic Probes:** These tools are used in semi-invasive attacks. Laser probes can precisely target specific areas of a chip to induce faults, while electromagnetic probes can be used to generate electromagnetic disturbances that affect the chip's operation.
 
 2. **Voltage and Clock Glitch Tools:** These tools are used to create voltage or clock glitches in the device. Voltage glitches involve suddenly dropping or increasing the power supply voltage, while clock glitches involve disrupting the clock signal. Both methods are designed to cause the device to behave unexpectedly, potentially bypassing security mechanisms or revealing sensitive information.
+
+## Section 2 - RSA attack
+
+### **2.1 A consumption curve is recorded during the processing of this algorithm. Describe the experimental set-up to acquire such a curve**
+
+To describe the experimental set-up for acquiring a consumption curve during the processing of the RSA algorithm, we would typically follow these steps:
+
+1. **Equipment Preparation:**
+   - **Oscilloscope:** An oscilloscope with sufficient sampling rate to capture the power consumption over time is required.
+   - **Probe:** A probe that can measure the power consumption, such as a current probe or a differential voltage probe across a shunt resistor, is needed.
+   - **Device Under Test (DUT):** The chip that performs the RSA modular exponentiation must be accessible for the measurement.
+
+2. **Connection Setup:**
+   - The measurement probe is connected in series with the power supply line of the DUT to capture the power consumption accurately.
+   - If using a shunt resistor, it's placed in series with the supply line and the voltage drop across it is measured to infer the current draw.
+
+3. **Data Acquisition Configuration:**
+   - The oscilloscope is configured to trigger at the start of the RSA operation to ensure that the entire process is captured.
+   - The time base is adjusted so that the oscilloscope can capture the consumption curve throughout the entire operation of the RSA algorithm.
+   - The vertical resolution is set to accurately capture the fluctuations in power consumption.
+
+4. **Execution of the Algorithm:**
+   - The RSA operation is initiated on the DUT.
+   - The oscilloscope begins capturing the power consumption curve as soon as the operation starts.
+
+5. **Data Capturing:**
+   - The power consumption is continuously recorded until the RSA operation is complete. This data will typically show variations in power usage as different parts of the algorithm are executed.
+
+### **2.2 Retrieve one byte of the private key with the help of the curve**
+
+To extract a byte of the private key from the power consumption trace during RSA operations, we undertake a methodical process that includes the following key steps:
+
+1. **Algorithm Analysis:**
+The proposed implementation of the RSA algorithm operates on an asymmetric basis, utilizing the square-and-multiply method. This approach results in varying power consumptions that are dependent on the type of operation being performed. By examining the algorithm closely, we recognize that the power trace can provide us with discernible indicators of the algorithm's execution flow, particularly the power differential between squaring and multiplying operations.
+
+2. **Trace to Bit Mapping:**
+3. From the power trace, we observe distinctive peaks and valleys corresponding to the computational intensity of the RSA algorithm's steps. The peaks in the power trace are indicative of the multiply operation—triggered when the key bit is '1' and the algorithm enters the 'if' branch. Conversely, valleys in the trace suggest the execution of only the squaring operation, signifying that the key bit at that point is '0'.
+
+4. **Key Reconstruction:**
+5. Having aligned the power trace peaks and valleys with their respective key bit values, we initiate the reconstruction of the key by backtracking. For instance, a power trace sequence of peaks (P) and valleys (V) like 'P - V - P - V - P - P - V - P - P - V - P' translates to a binary sequence '1 - 0 - 1 - 0 - 1 - 1 - 0 - 1 - 1 - 0 - 1'. It is crucial to remember that the bits are in reverse order due to the specific notation used in the RSA algorithm, so the actual key sequence would be reversed from the order in which it is read from the trace.
+
+By applying this structured approach, we can piece together the key's binary sequence. If the trace pattern identified is 'P - V - P - V - P - P - V - P - P - V - P', the resulting key sequence, when reversed to match the algorithm's notation, is '10110110101', which represents the portion of the private key we sought to retrieve.
