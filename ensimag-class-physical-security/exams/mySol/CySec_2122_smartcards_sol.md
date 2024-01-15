@@ -2,11 +2,11 @@
 
 ## Section 1 - Security evaluations for a SmartCard
 
-- **How many security levels (Evaluation Assurance Levels) are defined in the Common Criteria?**
+### **How many security levels (Evaluation Assurance Levels) are defined in the Common Criteria?**
 
 The Common Criteria define seven levels of security, known as Evaluation Assurance Levels (EAL1-7).
 
-- **Which is the level that should obtain a SmartCard used for banking transaction?**
+### **Which is the level that should obtain a SmartCard used for banking transaction?**
 
 The specific Evaluation Assurance Level (EAL) required for a SmartCard used for banking transactions can vary based on the requirements set by the banking institution and the regulatory standards applicable in a particular region or country. Generally, SmartCards for banking transactions require a high level of security due to the sensitive nature of financial data and transactions. This often means they are evaluated at higher EALs, such as EAL4, EAL5, or even higher.
 
@@ -14,7 +14,7 @@ EAL4 is commonly seen as a good balance between high security and cost-effective
 
 It's important to consult the specific regulations or standards applicable to banking transactions in the relevant jurisdiction, as the specific Evaluation Assurance Level (EAL) required for a SmartCard used in banking transactions is not explicitly mentioned in the provided documents. However, considering the high-security requirements for financial transactions, SmartCards in the banking sector typically need to adhere to higher security standards. This often involves higher EALs, such as EAL4 or above, to ensure robust security against various types of threats and vulnerabilities. The exact EAL would depend on the security requirements set by the banking institution, payment networks, and regulatory standards in the specific region or country.
 
-- **Describe the tools used during an invasive probing attack on embedded devices.**
+### **Describe the tools used during an invasive probing attack on embedded devices.**
 
 Invasive probing attacks on embedded devices utilize a variety of specialized tools, including:
 
