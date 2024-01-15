@@ -30,7 +30,7 @@ Invasive probing attacks on embedded devices utilize a variety of specialized to
 
 These tools are essential for conducting in-depth analysis and manipulation of the hardware, allowing attackers to retrieve sensitive data, such as encryption keys and PINs, or to modify the behavior of the chip.
 
-- **Describe at least 2 specific tools you can use to perform a perturbation attack.**
+### **1.4 Describe at least 2 specific tools you can use to perform a perturbation attack.**
 
 To perform a perturbation attack on embedded devices, two specific tools that can be used are:
 
