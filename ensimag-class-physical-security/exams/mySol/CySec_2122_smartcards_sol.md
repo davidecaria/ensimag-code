@@ -4,7 +4,7 @@
 
 ### **1.1 How many security levels (Evaluation Assurance Levels) are defined in the Common Criteria?**
 
-The Common Criteria define seven levels of security, known as Evaluation Assurance Levels (EAL1-7).
+The Common Criteria defines seven levels of security, known as Evaluation Assurance Levels (EAL1-7).
 
 ### **1.2 Which is the level that should obtain a SmartCard used for banking transaction?**
 
@@ -42,10 +42,10 @@ To perform a perturbation attack on embedded devices, two specific tools that ca
 
 ### **2.1 A consumption curve is recorded during the processing of this algorithm. Describe the experimental set-up to acquire such a curve**
 
-To describe the experimental set-up for acquiring a consumption curve during the processing of the RSA algorithm, we would typically follow these steps:
+To describe the experimental setup for acquiring a consumption curve during the processing of the RSA algorithm, we would typically follow these steps:
 
 1. **Equipment Preparation:**
-   - **Oscilloscope:** An oscilloscope with sufficient sampling rate to capture the power consumption over time is required.
+   - **Oscilloscope:** An oscilloscope with a sufficient sampling rate to capture the power consumption over time is required.
    - **Probe:** A probe that can measure the power consumption, such as a current probe or a differential voltage probe across a shunt resistor, is needed.
    - **Device Under Test (DUT):** The chip that performs the RSA modular exponentiation must be accessible for the measurement.
 
@@ -83,21 +83,21 @@ By applying this structured approach, we can piece together the key's binary seq
 ### **2.3 Propose an improvement to this algorithm such that the previous attack is not possible anymore.**
 
 1. **Algorithmic Balancing:**
-Adjust the algorithm to perform a fixed number of operations per cycle, regardless of the key bit being processed. This could mean always performing both the square and multiply operations but discarding the result of the multiply when the key bit is '0'. This balance ensures the power consumption remains consistent across all cycles.
+Adjust the algorithm to perform a fixed number of operations per cycle, regardless of the key bit being processed. This could mean always performing both the square and multiply operations but discarding the result of the multiply when the key bit is '0'. This balance ensures that power consumption remains consistent across all cycles.
 
 3. **Randomize Operation Order:**
-Introduce non-deterministic order of operations where possible. For instance, rather than always performing the square operation before the multiply, randomize which operation comes first to prevent a clear power consumption pattern from forming.
+Introduce a non-deterministic order of operations where possible. For instance, rather than always performing the square operation before multiplying, randomize which operation comes first to prevent a clear power consumption pattern from forming.
 
 By incorporating these improvements, the RSA algorithm would become more resistant to side-channel attacks based on power analysis, as the modifications aim to eliminate distinguishable power consumption patterns that can be tied to specific key bits. It's important to note that implementing these changes should be done with care to ensure that the security enhancements do not inadvertently introduce new vulnerabilities or significantly impact the algorithm's performance
 
-### **2.4 Is this new algorithm is safe against perturbation attacks? Explain why.**
-It is way more robuts but it can be vulnerable to other perturbation attacks.
+### **2.4 Is this new algorithm is safe against perturbation attacks? Explain why.**
+It is way more robust but it can be vulnerable to other perturbation attacks.
 
 ## Section 3 - Verify PIN
 
 ### **3.1 Explain the countermeasures at lines 1 and 2**
 
-The idea of having a custom constant value for true and false may be to avoid unintentional return values that may lead to success/fail of the function. 
+The idea of having a custom constant value for true and false may be to avoid unintentional return values that may lead to the success/failure of the function. 
 
 ### **3.2 Explain the countermeasures from line 12 to 15**
 
@@ -105,7 +105,7 @@ The main countermeasure is the use of the counter *correct_digits*. This elimina
 
 ### **3.3 Explain the countermeasures at lines 9 and 16**
 
-Those two lines implent the protection againts brute force attacks. By setting a maximum number of trials, we avoid exaustive attacks which will lead to the PIN value in a finate ammount of time (due to the length of the PIN).
+Those two lines implement protection against brute force attacks. By setting a maximum number of trials, we avoid exhaustive attacks which will lead to the PIN value in a finite amount of time (due to the length of the PIN).
 
 ## Section 4 - Symmetric cipher
 
@@ -113,8 +113,8 @@ Those two lines implent the protection againts brute force attacks. By setting a
 
 1. Setup
 2. Acquiring data (power consumption)
-3. Leakage assesment (use t-student to find two sets that have distinguishable means)
-4. Attack on a specfic part of the AES algorithm (ex: First AddRoundKey)
+3. Leakage assessment (use t-student to find two sets that have distinguishable means)
+4. Attack on a specific part of the AES algorithm (ex: First AddRoundKey)
 
 ### **4.2 What is a Differential Fault Attack (DFA) on a symmetric cipher?**
 A Differential Fault Attack (DFA) is an advanced cryptanalysis technique that involves intentionally inducing faults in the computation of a cryptographic algorithm and analyzing the differences (or differentials) between the correct outputs and the faulty outputs to deduce information about the secret key. When applied to a symmetric cipher, such as AES, the process typically involves the following steps:
@@ -126,7 +126,7 @@ A Differential Fault Attack (DFA) is an advanced cryptanalysis technique that in
    - The attacker collects the erroneous ciphertexts generated due to the induced faults, along with the correct ciphertext produced without fault induction.
 
 3. **Differential Analysis:**
-   - The attacker then compares the correct ciphertext with the faulty ciphertexts. The differences between these outputs are analyzed to determine how the induced fault affected the cipher's operation.
+   - The attacker then compares the correct ciphertext with the faulty ciphertext. The differences between these outputs are analyzed to determine how the induced fault affected the cipher's operation.
 
 4. **Key Hypothesis and Verification:**
    - By understanding the cipher's structure and how the fault propagates through the rounds of encryption, the attacker can make educated guesses about the secret key or certain bits of it. They can verify these hypotheses by checking if the assumed key bits would lead to the observed differences in the ciphertext.
@@ -146,7 +146,7 @@ The Piret and Quisquater Differential Fault Analysis (DFA) method on AES typical
 
 2. **Well-Timed Fault:** The fault must be induced at a precise time, specifically when the AES cipher is undergoing its last round of encryption operations. This is due to the attack exploiting the simplicity of the last round, which does not include the MixColumns operation.
 
-Using the AES round transformations and the observed faulty output, the attacker can work backward to deduce the correct value of the key bytes that were used in the last round key (RoundKey). Since AES key schedule is reversible, recovering the last round key can lead to the recovery of the entire AES key.
+Using the AES round transformations and the observed faulty output, the attacker can work backward to deduce the correct value of the key bytes that were used in the last round key (RoundKey). Since the AES key schedule is reversible, recovering the last round key can lead to the recovery of the entire AES key.
 
 The Piret and Quisquater attack is significant because it demonstrated that even a single well-placed fault can compromise the security of an otherwise secure encryption algorithm like AES. This underscores the importance of implementing hardware and software countermeasures in cryptographic devices to detect and mitigate fault attacks.
 
