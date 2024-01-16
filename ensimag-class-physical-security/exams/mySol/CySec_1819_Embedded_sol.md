@@ -57,9 +57,7 @@ This approach involves introducing randomness into the way a system executes its
 
 - **Performance Impact**: Randomized execution can introduce overheads and inefficiencies in the system, potentially impacting performance. Balancing security and performance is key.
 - **Randomness Source**: The quality of the randomization depends on the source of randomness. A secure and unpredictable source is necessary for effectiveness.
-- **Adaptability**: The level of random
-
-ization should be adaptable based on the security requirements and threat models.
+- **Adaptability**: The level of randomization should be adaptable based on the security requirements and threat models.
 
 In summary, randomized execution as an architectural countermeasure can significantly enhance resistance to side-channel attacks by disrupting the predictable patterns that such attacks rely on. 
 However, careful consideration must be given to its impact on system performance and the quality of randomness to ensure its effectiveness.
